@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: testing-s3-mount
+spec:
+  containers:
+  - image: alpine:3.13.6
+    name: testing-s3-mount
+    securityContext:
+      privileged: true
+    volumeMounts:
+    - name: s3mount
+      mountPath: /var/s3:shared
+    stdin: true
+    tty: true
+    livenessProbe:
+      exec:
+        command: ["ls", "/var/s3"]
+      failureThreshold: 3
+      initialDelaySeconds: 10
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 1
+  volumes:
+  - name: s3mount
+    hostPath:
+      path: /mnt/s3/bucket1

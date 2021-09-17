@@ -1,0 +1,66 @@
+# Default values for helm-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: dkr.ecr.ap-southeast-1.amazonaws.com/kube-goofys
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "1.0.0"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: "kube-goofys"
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext:
+  privileged: true
+  capabilities:
+    add:
+    - SYS_ADMIN
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+env:
+  - name: AWS_ACCESS_KEY_ID
+    value: "{ AWS_ACCESS_KEY_ID }"
+  - name: AWS_SECRET_ACCESS_KEY
+    value: "{ AWS_SECRET_ACCESS_KEY }"
+  - name: MOUNT_POINT
+    value: "/mnt/s3"
+  - name: AWS_S3_BUCKETS_NAME
+    value: "{ AWS_S3_BUCKETS_NAME }"
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
