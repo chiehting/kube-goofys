@@ -3,7 +3,7 @@
 export AWS_ACCESS_KEY_ID=
 export AWS_SECRET_ACCESS_KEY=
 AWS_S3_BUCKETS_NAME=
-AWS_ECR=
+AWS_ECR=true
 
 CONTAINER_IMAGE_NAME=kube-goofys
 CONTAINER_IMAGE_TAG=1.0.0
@@ -27,7 +27,7 @@ cd `dirname $0`
 
 cp helm-chart/values_template.yaml helm-chart/values.yaml
 sed -i '' \
-  "s/dkr.ecr.ap-southeast-1.amazonaws.com\/kube-goofys/$CONTAINER_REGISTORY_HOST/g; \
+  "s/{ CONTAINER_REPOSITORY }/$CONTAINER_REGISTORY_HOST/g; \
   s/{ AWS_ACCESS_KEY_ID }/$AWS_ACCESS_KEY_ID/g; \
   s/{ AWS_SECRET_ACCESS_KEY }/$AWS_SECRET_ACCESS_KEY/g; \
   s/{ AWS_S3_BUCKETS_NAME }/$AWS_S3_BUCKETS_NAME/g" \
