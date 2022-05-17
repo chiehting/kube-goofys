@@ -25,7 +25,7 @@ do
   echo "mount $bucket to $MOUNT_POINT/$bucket"
   mkdir -p $MOUNT_POINT/$bucket $LOG_DIR
   touch $LOG_DIR/$bucket.log
-  goofys --debug_fuse -f $bucket $MOUNT_POINT/$bucket >> $LOG_DIR/$bucket.log 2>&1 &
+  goofys --use-content-type --debug_fuse -f $bucket $MOUNT_POINT/$bucket >> $LOG_DIR/$bucket.log 2>&1 &
 done
 
 tail -f $LOG_DIR/*.log

@@ -15,11 +15,11 @@ Docker
 ```bash
 bash$ docker version
 Client:
- Version:           20.10.8
+ Version: 20.10.8
 ・・・
 Server: Docker Engine - Community
  Engine:
-  Version:          20.10.8
+  Version: 20.10.8
 ・・・
 ```
 
