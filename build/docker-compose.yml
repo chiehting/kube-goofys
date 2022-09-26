@@ -7,8 +7,8 @@ services:
       dockerfile: ./build/Dockerfile
       args:
         version: latest
-    image: kube-goofys
-    container_name: kube-goofys
+    image: goofys
+    container_name: goofys
     restart: always
     environment:
       AWS_S3_BUCKETS_NAME: "files.example.com files2-example.com"

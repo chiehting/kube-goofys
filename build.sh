@@ -2,7 +2,7 @@
 
 CONTAINER_IMAGE_NAME=library/kube-goofys
 CONTAINER_IMAGE_TAG=1.0.0
-CONTAINER_REGISTORY_HOST=harbor.hearts.tw
+CONTAINER_REGISTORY_HOST=hub.docker.com
 
 cd `dirname $0`
 
@@ -10,6 +10,7 @@ docker build -t ${CONTAINER_REGISTORY_HOST}/${CONTAINER_IMAGE_NAME}:${CONTAINER_
 docker push ${CONTAINER_REGISTORY_HOST}/${CONTAINER_IMAGE_NAME}:${CONTAINER_IMAGE_TAG}
 
 cp helm-chart/values_template.yaml helm-chart/values.yaml
+
 sed -i '' \
   "s/{ CONTAINER_REPOSITORY }/$CONTAINER_REGISTORY_HOST/g; \
   s/{ AWS_ACCESS_KEY_ID }/$AWS_ACCESS_KEY_ID/g; \
