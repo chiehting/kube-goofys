@@ -1,5 +1,5 @@
 apiVersion: v2
-name: kube-goofys
+name: goofys
 description: Goofys allows you to mount an S3 bucket as a filey system.
 
 # A chart can be either an 'application' or a 'library' chart.
