@@ -17,9 +17,9 @@ RUN apk add git make; \
 
 FROM alpine:3.16.2
 COPY --from=builder /go/src/goofys/goofys /usr/bin
-COPY ./entrypoint.sh /entrypoint.sh
-COPY ./stop.sh /stop.sh
-RUN apk update && apk upgrade && \
-  apk add --no-cache mailcap
-CMD ["/bin/sh","entrypoint.sh"]
+COPY ./build/entrypoint.sh /entrypoint.sh
+COPY ./build/stop.sh /stop.sh
+RUN apk update && apk upgrade && apk add --no-cache  mailcap fuse
+
+CMD ["/bin/sh","/entrypoint.sh"]
 
