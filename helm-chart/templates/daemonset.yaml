@@ -32,8 +32,10 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           stdin: true
           tty: true
-          env:
-            {{- toYaml .Values.env | nindent 12 }}
+          {{- with .Values.envFrom }}
+          envFrom:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           lifecycle:
             preStop:
               exec:

@@ -23,6 +23,3 @@ Thumbs.db
 *.o
 *.so
 
-# Service
-helm-chart/values.yaml
-
