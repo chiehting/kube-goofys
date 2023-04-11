@@ -4,7 +4,5 @@ metadata:
   namespace: devops
   name: goofys
 data:
-  AWS_ACCESS_KEY_ID: ""
-  AWS_SECRET_ACCESS_KEY: ""
   MOUNT_POINT: "/mnt/s3"
   AWS_S3_BUCKETS_NAME: "s3-test1.exmple.com,s3-test2.example.com"
