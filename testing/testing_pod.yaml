@@ -10,7 +10,7 @@ spec:
       privileged: true
     volumeMounts:
     - name: s3mount
-      mountPath: /var/s3:shared
+      mountPath: /var/s3
     stdin: true
     tty: true
     livenessProbe:
