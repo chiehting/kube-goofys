@@ -33,7 +33,6 @@ securityContext:
   capabilities:
     add:
     - SYS_ADMIN
-  privileged: true
 
 resources:
   limits:
